@@ -1,13 +1,11 @@
 const express = require('express');
-const app = express();
-const PORT = 3000;
-const db = require('./db');
+const router = express.Router();
+const db = require('../config/db.conf');
 
-app.get('/nika', (req, res) => {
-    console.log('Hello, this is my new project about news! :)');
-});
 
-app.get('/news', (req, res) => {
+
+
+router.get('/', (req, res) => {
     const query = `
       SELECT 
             news.id, 
@@ -33,11 +31,21 @@ app.get('/news', (req, res) => {
     });
 });
 
-app.get('/newsDetails/:id', (req, res) => {
+router.get('/newsDetails/:id', (req, res) => {
     const newsId = req.params.id;
     const query = `
-    SELECT news.id, news.title, news.content
-    FROM news 
+     SELECT 
+            news.id, 
+            news.title, 
+            news.content, 
+            news.image_file_name, 
+            news_categories.name AS category_name
+        FROM 
+            news
+        JOIN 
+            news_categories 
+        ON 
+            news.category_id = news_categories.id
     WHERE news.id = ? `;
 
     db.query(query, [newsId], (err, result) => {
@@ -51,8 +59,4 @@ app.get('/newsDetails/:id', (req, res) => {
         }
     })
 })
-
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+module.exports = router;

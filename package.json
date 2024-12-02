@@ -1,9 +1,9 @@
 {
   "name": "presmedia.ge",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "App.routes.js",
   "scripts": {
-    "start:front": "nodemon app.js"
+    "start:front": "nodemon routes/App.routes.js"
   },
   "keywords": [],
   "author": "",
