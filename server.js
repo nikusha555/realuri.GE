@@ -3,9 +3,16 @@ const app = express();
 const PORT = 3000;
 const db = require('./config/db.conf');
 
+const dotenv = require('dotenv');  // Add dotenv to load environment variables
+
+// Load the .env.production file (or you can use .env by default in development)
+dotenv.config({ path: '.env.production' });  // Explicitly load .env.production in production
+
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+console.log(process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASSWORD, process.env.DB_NAME);
 
 
 const initRoutes = require('./routes/init');
