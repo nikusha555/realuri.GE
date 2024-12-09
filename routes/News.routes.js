@@ -6,25 +6,20 @@ const db = require('../config/db.conf');
 
 
 router.get('/', (req, res) => {
-    // const query = `
-    //   SELECT 
-    //         news.id, 
-    //         news.title, 
-    //         news.content, 
-    //         news.image_file_name, 
-    //         news_categories.name AS category_name
-    //     FROM 
-    //         news
-    //     JOIN 
-    //         news_categories 
-    //     ON 
-    //         news.category_id = news_categories.id;
-
-    //  `;
-    console.log(query)
     const query = `
-  SHOW databases;
-   `;
+       SELECT 
+             news.id, 
+             news.title, 
+             news.content, 
+             news.image_file_name, 
+             news_categories.name AS category_name
+         FROM 
+             news
+         JOIN 
+             news_categories 
+         ON 
+             news.category_id = news_categories.id;
+      `;
 
     db.query(query, (err, result) => {
         if (err) {

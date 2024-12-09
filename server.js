@@ -15,14 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 console.log(process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASSWORD, process.env.DB_NAME);
 
 
-app.get('/', (req, res) => {
-    const query = `
-    SHOW databases;
-     `;
 
-
-     console.log(query)
-})
 
 const initRoutes = require('./routes/init');
 initRoutes(app);
