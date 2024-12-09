@@ -12,7 +12,6 @@ dotenv.config({ path: '.env.production' });  // Explicitly load .env.production 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-console.log(process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASSWORD, process.env.DB_NAME);
 
 
 
