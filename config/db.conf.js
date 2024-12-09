@@ -6,18 +6,29 @@ const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    debug: true
 
-    
+
 });
 
 // Connect to the database
-connection.connect((err) => {
+// connection.connect((err) => {
+//     if (err) {
+//         console.error('Error connecting to the database:', err);
+//         return;
+//     }
+//     console.log('Connected to the MySQL database!');
+
+
+
+connection.connect(err => {
     if (err) {
-        console.error('Error connecting to the database:', err);
-        return;
+        console.error('Connection failed:', err.message);
+    } else {
+        console.log('Database connected successfully!');
     }
-    console.log('Connected to the MySQL database!');
+    connection.end();
 });
 
 module.exports = connection;
