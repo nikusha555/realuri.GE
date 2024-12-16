@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const db = require('./config/db.conf');
 
 const dotenv = require('dotenv');  // Add dotenv to load environment variables
 
 // Load the .env.production file (or you can use .env by default in development)
-dotenv.config({ path: '.env.production' });  // Explicitly load .env.production in production
+dotenv.config({ path: '.env' });  // Explicitly load .env.production in production
 
 
 
