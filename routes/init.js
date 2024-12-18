@@ -1,6 +1,6 @@
 import express from 'express';
 import appRoutes from './App.routes.js';
-import newsRoutes from './news/news.routes.js';
+import newsRoutes from './news/News.routes.js';
 import newsDetailsRoutes from './news/newsDetails.routes.js';
 import newsCategories from './news/newsCategories.routes.js';
 
