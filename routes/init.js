@@ -1,4 +1,3 @@
-const express = require('express');
 const appRoutes = require('./App.routes');
 const newsRoutes = require('./news/news.routes');
 const newsDetailsRoutes = require('./news/newsDetails.routes');
