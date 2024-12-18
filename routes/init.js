@@ -10,10 +10,3 @@ module.exports = (app) => {
     app.use('/newsDetails', newsDetailsRoutes);
     app.use('/newsCategories', newsCategories);
 };
-
-module.exports = (app) => {
-    app.use('/', appRoutes);
-    app.use('/news', newsRoutes);
-    app.use('/newsDetails', newsDetailsRoutes);
-    app.use('/newsCategories', newsCategories);
-};
