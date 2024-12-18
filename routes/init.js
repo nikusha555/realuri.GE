@@ -1,4 +1,4 @@
-const appRoutes = require('./App.routes');
+const appRoutes = require('./app.routes');
 const newsRoutes = require('./news/news.routes');
 const newsDetailsRoutes = require('./news/newsDetails.routes');
 const newsCategories = require('./news/newsCategories.routes');
