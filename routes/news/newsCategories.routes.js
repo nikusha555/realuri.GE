@@ -31,6 +31,6 @@ router.get('/:category', (req, res) => {
             res.json(result)
         }
     })
-})
+});
 
-module.exports = router;
+export default router;
