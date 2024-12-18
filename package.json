@@ -1,6 +1,7 @@
 {
   "name": "presmedia.ge",
   "version": "1.0.0",
+  "type": "module",
   "main": "App.routes.js",
   "scripts": {
     "start": "nodemon server.js"

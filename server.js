@@ -1,9 +1,8 @@
-const express = require('express');
+import express from 'express';
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = require('./config/db.conf');
-
-const dotenv = require('dotenv');  // Add dotenv to load environment variables
+import initRoutes from './routes/init.js'
+import dotenv from 'dotenv';
 
 // Load the .env.production file (or you can use .env by default in development)
 dotenv.config({ path: '.env' });  // Explicitly load .env.production in production
@@ -16,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-const initRoutes = require('./routes/init');
+
 initRoutes(app);
 
 

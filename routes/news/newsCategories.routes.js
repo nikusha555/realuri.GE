@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const db = require('../../config/db.conf');
+import db from '../../config/db.conf';
 
 
 

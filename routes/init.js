@@ -1,10 +1,10 @@
-const express = require('express');
-const appRoutes = require('./app.routes'); // Check case sensitivity
-const newsRoutes = require('./news/news.routes');
-const newsDetailsRoutes = require('./news/newsDetails.routes');
-const newsCategories = require('./news/newsCategories.routes');
+import express from 'express';
+import appRoutes from './app.routes.js';
+import newsRoutes from './news/news.routes.js';
+import newsDetailsRoutes from './news/newsDetails.routes.js';
+import newsCategories from './news/newsCategories.routes.js';
 
-module.exports = (app) => {
+export default (app) => {
     app.use('/', appRoutes); // Ensure appRoutes is properly imported
     app.use('/news', newsRoutes);
     app.use('/newsDetails', newsDetailsRoutes);
