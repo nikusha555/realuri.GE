@@ -19,7 +19,9 @@ router.get('/', (req, res) => {
          JOIN 
              news_categories 
          ON 
-             news.category_id = news_categories.id;
+             news.category_id = news_categories.id
+              ORDER BY 
+         news.created_date DESC;
       `;
 
     db.query(query, (err, result) => {
