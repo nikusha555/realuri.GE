@@ -3,10 +3,17 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 import initRoutes from './routes/init.js'
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 // Load the .env.production file (or you can use .env by default in development)
 dotenv.config({ path: '.env' });  // Explicitly load .env.production in production
 
+
+app.use(cors({
+    origin: 'http://127.0.0.1:5500', // Front-end origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+}));
 
 
 app.use(express.json());
