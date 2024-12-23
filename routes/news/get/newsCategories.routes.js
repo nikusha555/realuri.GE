@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import db from '../../config/db.conf.js';
+import db from '../../../config/db.conf.js';
 
 
 
