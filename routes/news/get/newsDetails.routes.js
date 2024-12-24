@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 import db from '../../../config/db.conf.js';
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     const newsId = req.params.id;
     const query = `
      SELECT 
@@ -19,16 +19,20 @@ router.get('/:id', (req, res) => {
             news.category_id = news_categories.id
     WHERE news.id = ? `;
 
-    db.query(query, [newsId], (err, result) => {
-        if (err) {
-            return res.status(500).send(err);
+    try {
+        // Pass the parameter `newsId` to the query
+        const [rows] = await db.query(query, [newsId]);
+
+        if (rows.length === 0) {
+            // If no news item is found
+            return res.status(404).json({ message: 'News not found' });
         }
-        if (result.length === 0) {
-            return res.status(404).send('News not found');
-        } else {
-            res.json(result)
-        }
-    })
-})
+
+        res.json(rows[0]); // Send the first result as JSON (since `id` is unique)
+    } catch (err) {
+        console.error('Error executing query:', err);
+        res.status(500).json({ error: 'An error occurred while fetching the news.' });
+    }
+});
 
 export default router;

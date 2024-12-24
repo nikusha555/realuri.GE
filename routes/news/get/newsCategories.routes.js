@@ -4,7 +4,7 @@ import db from '../../../config/db.conf.js';
 
 
 
-router.get('/:category', (req, res) => {
+router.get('/:category', async (req, res) => {
     const newsCategory = req.params.category;
     const query = `
      SELECT 
@@ -21,16 +21,20 @@ router.get('/:category', (req, res) => {
             news.category_id = news_categories.id
     WHERE news.category_id = ? `;
 
-    db.query(query, [newsCategory], (err, result) => {
-        if (err) {
-            return res.status(500).send(err);
+    try {
+        // Execute the query using the connection pool and pass the category as a parameter
+        const [rows] = await db.query(query, [newsCategory]);
+
+        if (rows.length === 0) {
+            // If no news items are found for the category
+            return res.status(404).json({ message: 'No news found for this category' });
         }
-        if (result.length === 0) {
-            return res.status(404).send('News not found');
-        } else {
-            res.json(result)
-        }
-    })
+
+        res.json(rows); // Send the result as JSON
+    } catch (err) {
+        console.error('Error executing query:', err);
+        res.status(500).json({ error: 'An error occurred while fetching the news.' });
+    }
 });
 
 export default router;
