@@ -18,7 +18,7 @@ const adminAuth = (req, res, next) => {
         next(); // Proceed to the next middleware or route
     } catch (error) {
         console.error(error);
-        res.status(401).json({ message: 'Unauthorized: Invalid token' });
+        res.status(401).json({ message: 'Unauthorizeddd: Invalid token' });
     }
 };  
 
