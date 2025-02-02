@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 3000;
 import initRoutes from './routes/init.js'
 import dotenv from 'dotenv';
 import cors from 'cors';
+import './jobs/cronJobs.js';
 
-// Load the .env.production file (or you can use .env by default in development)
 dotenv.config({ path: '.env' });  // Explicitly load .env.production in production
 
 
