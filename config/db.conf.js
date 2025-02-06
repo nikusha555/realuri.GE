@@ -15,7 +15,7 @@ const connection = mysql.createPool({
     queueLimit: 0, // 0 means no limit
 });
 
-// Test the connection
+// Test the connection 
 (async () => {
     try {
         const [rows] = await connection.query('SELECT 1'); // Simple test query
