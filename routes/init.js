@@ -8,6 +8,7 @@ import editNewsRoutes from './news/edit/editNews.routes.js';
 import deleteNewsRoutes from './news/delete/deleteNews.routes.js';
 import loginRoutes from './admin/login.routes.js';
 import adminAuth from '../middleware/admin.auth.js';
+import projects from '../routes/projects/get/projects.routes.js'
 
 export default (app) => {
     app.use('/', appRoutes); // Ensure appRoutes is properly imported
@@ -18,4 +19,5 @@ export default (app) => {
     app.use('/editNews',  adminAuth, editNewsRoutes);
     app.use('/deleteNews', adminAuth, deleteNewsRoutes);
     app.use('/login', loginRoutes)
+    app.use('/projects', projects)
 };
