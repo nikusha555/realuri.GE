@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken';
 
 const adminAuth = (req, res, next) => {
     try {
-        // Extract token from the Authorization header
-        const token = req.headers.authorization?.split(' ')[1];
+        // Extract token from cookies instead of headers
+        const token = req.cookies?.token;
 
         if (!token) {
             return res.status(401).json({ message: 'Unauthorized: No token provided' });
@@ -17,10 +17,9 @@ const adminAuth = (req, res, next) => {
 
         next(); // Proceed to the next middleware or route
     } catch (error) {
-        console.error(error);
-        res.status(401).json({ message: 'Unauthorizeddd: Invalid token' });
+        console.error('Auth Error:', error);
+        res.status(401).json({ message: 'Unauthorized: Invalid token' });
     }
-};  
+};
 
 export default adminAuth;
-

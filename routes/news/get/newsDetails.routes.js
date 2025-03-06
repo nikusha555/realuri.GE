@@ -10,13 +10,8 @@ router.get('/:id', async (req, res) => {
             news.title, 
             news.content, 
             news.image_file_name, 
-            news_categories.name AS category_name
         FROM 
             news
-        JOIN 
-            news_categories 
-        ON 
-            news.category_id = news_categories.id
     WHERE news.id = ? `;
 
     try {

@@ -8,16 +8,23 @@ import editNewsRoutes from './news/edit/editNews.routes.js';
 import deleteNewsRoutes from './news/delete/deleteNews.routes.js';
 import loginRoutes from './admin/login.routes.js';
 import adminAuth from '../middleware/admin.auth.js';
-import projects from '../routes/projects/get/projects.routes.js'
+import projects from '../routes/projects/get/projects.routes.js';
+import addProjects from '../routes/projects/post/addProject.routes.js';
+import editProjects from '../routes/projects/edit/editProjects.routes.js';
+import deleteProjects from '../routes/projects/delete/deleteProjects.routes.js'
+
 
 export default (app) => {
-    app.use('/', appRoutes); // Ensure appRoutes is properly imported
+    app.use('/', appRoutes);
     app.use('/news', newsRoutes);
     app.use('/newsDetails', newsDetailsRoutes);
-    app.use('/newsCategories', newsCategories);
-    app.use('/addNews',  adminAuth, addNewsRoutes);
-    app.use('/editNews',  adminAuth, editNewsRoutes);
+    // app.use('/newsCategories', newsCategories);  დროებით ჩავხსენი
+    app.use('/addNews', adminAuth, addNewsRoutes);
+    app.use('/editNews', adminAuth, editNewsRoutes);
     app.use('/deleteNews', adminAuth, deleteNewsRoutes);
-    app.use('/login', loginRoutes)
-    app.use('/projects', projects)
+    app.use('/login', loginRoutes);
+    app.use('/projects', projects);
+    app.use('/addProjects', addProjects);
+    app.use('/editProjects', adminAuth, editProjects);
+    app.use('/deleteProjects', deleteProjects)
 };

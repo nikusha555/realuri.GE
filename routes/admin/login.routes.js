@@ -1,13 +1,13 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
-import db from '../../config/db.conf.js'; // Assuming you have a db.js for database connection
+import db from '../../config/db.conf.js'; // Database connection
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+
 dotenv.config();
 
 const router = express.Router();
-
-// Define your JWT secret key
-const JWT_SECRET = 'h4f2h%gdj*hs@gfgsj_)(*bh!@#hbdjsj'; // Replace 'your_secret_key' with a strong, unique key
+router.use(cookieParser()); // Enable cookie parsing middleware
 
 // Admin login route
 router.post('/', async (req, res) => {
@@ -34,20 +34,27 @@ router.post('/', async (req, res) => {
         // Generate a JWT token
         const token = jwt.sign(
             {
-                id: admin.id,          // Admin's unique ID
+                id: admin.id,
                 username: admin.username,
                 email: admin.email,
             },
             process.env.JWT_SECRET,
-            { expiresIn: '1h' } // Token expires in 1 hour
+            { expiresIn: '48h' }
         );
 
-        res.json({ token, message: 'თქვენ წარმატებით გაიარეთ ავტორიზაცია' });
+        // Store the token in an HTTP-only cookie
+        res.cookie('token', token, {
+            httpOnly: true, // Prevents client-side access
+            secure: process.env.NODE_ENV === 'production', // Uses HTTPS in production
+            sameSite: 'Strict', // Prevents CSRF attacks
+            maxAge: 48* 60 * 60 * 1000, // 48 hours
+        });
+
+        res.json({ message: 'თქვენ წარმატებით გაიარეთ ავტორიზაცია' });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: error.message });
+        console.error('Login Error:', error);
+        res.status(500).json({ message: 'სერვერის შეცდომა' });
     }
 });
 
 export default router;
-

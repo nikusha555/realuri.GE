@@ -5,7 +5,7 @@ import initRoutes from './routes/init.js'
 import dotenv from 'dotenv';
 import cors from 'cors';
 import './jobs/cronJobs.js';
-    
+
 dotenv.config({ path: '.env' });  // Explicitly load .env.production in production
 
 
