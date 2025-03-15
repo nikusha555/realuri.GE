@@ -18,13 +18,13 @@ export default (app) => {
     app.use('/', appRoutes);
     app.use('/news', newsRoutes);
     app.use('/newsDetails', newsDetailsRoutes);
-    // app.use('/newsCategories', newsCategories);  დროებით ჩავხსენი
-    app.use('/addNews', adminAuth, addNewsRoutes);
-    app.use('/editNews', adminAuth, editNewsRoutes);
-    app.use('/deleteNews', adminAuth, deleteNewsRoutes);
+    // app.use('/newsCategories', adminAuth, newsCategories);  დროებით ჩავხსენი
+    app.use('/addNews',  addNewsRoutes);
+    app.use('/editNews', editNewsRoutes);
+    app.use('/deleteNews',  deleteNewsRoutes);
     app.use('/login', loginRoutes);
     app.use('/projects', projects);
     app.use('/addProjects', addProjects);
-    app.use('/editProjects', adminAuth, editProjects);
+    app.use('/editProjects',  editProjects);
     app.use('/deleteProjects', deleteProjects)
 };
