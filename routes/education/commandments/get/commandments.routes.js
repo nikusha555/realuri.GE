@@ -9,7 +9,8 @@ import db from '../../../../config/db.conf.js';  // Correct the path to db.conf.
 router.get('/', async (req, res) => {
     const query = `
        SELECT 
-             *
+             commandments.name,
+             commandments.content
          FROM 
              commandments
               ORDER BY 

@@ -12,6 +12,8 @@ import projects from '../routes/projects/get/projects.routes.js';
 import addProjects from '../routes/projects/post/addProject.routes.js';
 import editProjects from '../routes/projects/edit/editProjects.routes.js';
 import deleteProjects from '../routes/projects/delete/deleteProjects.routes.js'
+import Commandments from "../routes/education/commandments/get/commandments.routes.js"
+import CommandmentsDetails from "../routes/education/commandments/get/commandmentsDetails.routes.js"
 
 
 export default (app) => {
@@ -26,5 +28,7 @@ export default (app) => {
     app.use('/projects', projects);
     app.use('/addProjects', addProjects);
     app.use('/editProjects',  editProjects);
-    app.use('/deleteProjects', deleteProjects)
+    app.use('/deleteProjects', deleteProjects);
+    app.use('/commandments', Commandments);
+    app.use('/commandmentsDetails', CommandmentsDetails)
 };
