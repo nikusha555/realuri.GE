@@ -10,7 +10,7 @@ dotenv.config({ path: '.env' });  // Explicitly load .env.production in producti
 
 
 app.use(cors({
-    origin: ['http://localhost:4200/'], // Front-end origin
+    origin: ['iverielni.ge'], // Front-end origin
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
     credentials: true, // Include credentials if required

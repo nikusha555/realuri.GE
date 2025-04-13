@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    const hello = "Hello, this is our new project about news! :)"
+    const hello = "მოგესალმებით ჩვენს ვებ გვერდზე"
     res.json(hello);
 });
 

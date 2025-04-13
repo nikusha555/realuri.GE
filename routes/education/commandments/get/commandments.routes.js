@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import db from '../../../config/db.conf.js';  // Correct the path to db.conf.js
+import db from '../../../../config/db.conf.js';  // Correct the path to db.conf.js
 
 
 
@@ -9,15 +9,11 @@ import db from '../../../config/db.conf.js';  // Correct the path to db.conf.js
 router.get('/', async (req, res) => {
     const query = `
        SELECT 
-             news.id, 
-             news.title, 
-             news.content, 
-             news.image_file_name, 
-             news.created_date   
+             *
          FROM 
-             news
+             commandments
               ORDER BY 
-         news.created_date DESC;
+         commandments.created_date DESC;
       `;
 
     try {
@@ -26,7 +22,7 @@ router.get('/', async (req, res) => {
         res.json(rows); // Send the result as JSON
     } catch (err) {
         console.error('Error executing query:', err);
-        res.status(500).send('Error fetching news.');
+        res.status(500).send('Error fetching commandments');
     }
 
 });
