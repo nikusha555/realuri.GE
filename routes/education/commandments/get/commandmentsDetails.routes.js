@@ -25,8 +25,7 @@ router.get('/:id', async (req, res) => {
             quiz ON commandments.quiz_id = quiz.id
         LEFT JOIN 
             quiz_questions ON quiz.id = quiz_questions.quiz_id
-        ORDER BY 
-            commandments.created_date DESC, quiz_questions.id ASC;
+       
     `;
 
     try {
