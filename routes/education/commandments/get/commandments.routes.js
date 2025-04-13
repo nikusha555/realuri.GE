@@ -13,8 +13,7 @@ router.get('/', async (req, res) => {
              commandments.content
          FROM 
              commandments
-              ORDER BY 
-         commandments.created_date DESC;
+        
       `;
 
     try {
