@@ -1,3 +1,9 @@
+import express from 'express';
+const router = express.Router();
+import db from '../../../../config/db.conf.js';  // Correct the path to db.conf.js
+
+
+
 router.get('/:id', async (req, res) => {
     const query = `
         SELECT 
