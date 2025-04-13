@@ -37,3 +37,5 @@ router.get('/:id', async (req, res) => {
         res.status(500).send('Error fetching commandments and quiz data');
     }
 });
+
+export default router;
